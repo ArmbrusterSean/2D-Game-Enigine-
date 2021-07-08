@@ -6,15 +6,15 @@ Main.java
  Main
 jade/MouseListener.java
  jade.MouseListener
-renderer/Shader.java
- renderer.Shader
-jade/LevelScene.java
- jade.LevelScene
-jade/Window.java
- jade.Window
 jade/Scene.java
  jade.Scene
 jade/Camera.java
  jade.Camera
+jade/LevelScene.java
+ jade.LevelScene
+jade/Window.java
+ jade.Window
+renderer/Shader.java
+ renderer.Shader
 jade/LevelEditorScene.java
  jade.LevelEditorScene
