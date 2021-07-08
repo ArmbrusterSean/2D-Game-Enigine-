@@ -12,9 +12,11 @@ jade/Camera.java
  jade.Camera
 jade/LevelScene.java
  jade.LevelScene
-jade/Window.java
- jade.Window
 renderer/Shader.java
  renderer.Shader
+renderer/Texture.java
+ renderer.Texture
+jade/Window.java
+ jade.Window
 jade/LevelEditorScene.java
  jade.LevelEditorScene
