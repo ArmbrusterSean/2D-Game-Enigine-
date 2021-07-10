@@ -3,13 +3,13 @@ package jade;
 import components.SpriteRenderer;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
+import util.AssetPool;
 
 public class LevelEditorScene extends Scene {
 
     public LevelEditorScene() {
 
     }
-
     @Override
     public void init() {
         this.camera = new Camera(new Vector2f());
@@ -32,17 +32,21 @@ public class LevelEditorScene extends Scene {
                 this.addGameObjectToScene(go);
             }
         }
+
+        loadResources();
+    }
+
+    // load resources at loading time
+    private void loadResources() {
+        AssetPool.getShader("assets/shaders/default.glsl");
     }
 
     @Override
     public void update(float dt) {
-        // print fps
-        System.out.println("FPS " + (1.0f / dt));
 
         for (GameObject go : this.gameObjects) {
             go.update(dt);
         }
-
         this.renderer.render();
     }
 }
