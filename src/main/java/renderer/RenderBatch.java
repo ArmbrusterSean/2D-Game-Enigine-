@@ -219,4 +219,13 @@ public class RenderBatch {
     public boolean hasRoom() {
         return this.hasRoom;
     }
+
+    // Test for max textures (8)
+    public boolean hasTextureRoom() {
+        return this.textures.size() < 8;
+    }
+
+    public boolean hasTexture(Texture tex) {
+        return this.textures.contains(tex);
+    }
 }
