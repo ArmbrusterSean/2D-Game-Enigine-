@@ -27,9 +27,9 @@ public class Window {
         this.width = 1920;
         this.height = 1080;
         this.title = "Mario";
-        r = 1;
-        b = 1;
-        g = 1;
+        r = 0.7f;
+        b = 0.2f;
+        g = 0.1f;
         a = 1;
     }
 
@@ -37,7 +37,7 @@ public class Window {
         switch (newScene) {
             case 0:
                 currentScene = new LevelEditorScene();
-                currentScene.init();                    // scene initialized before running
+                currentScene.init();
                 currentScene.start();
                 break;
             case 1:
@@ -46,7 +46,7 @@ public class Window {
                 currentScene.start();
                 break;
             default:
-                assert false: "Unknown Scene '" + newScene + "'";
+                assert false : "Unknown scene '" + newScene + "'";
                 break;
         }
     }
@@ -59,7 +59,6 @@ public class Window {
         return Window.window;
     }
 
-    // get current scene
     public static Scene getScene() {
         return get().currentScene;
     }
@@ -124,7 +123,6 @@ public class Window {
     }
 
     public void loop() {
-        // Time of frame beginning and ending
         float beginTime = (float)glfwGetTime();
         float endTime;
         float dt = -1.0f;
@@ -142,9 +140,8 @@ public class Window {
 
             glfwSwapBuffers(glfwWindow);
 
-            // get delta time
             endTime = (float)glfwGetTime();
-            dt = endTime - beginTime;     // looped time
+            dt = endTime - beginTime;
             beginTime = endTime;
         }
     }
