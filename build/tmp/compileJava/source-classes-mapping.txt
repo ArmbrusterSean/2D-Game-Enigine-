@@ -6,8 +6,8 @@ renderer/Texture.java
  renderer.Texture
 jade/MouseListener.java
  jade.MouseListener
-Main.java
- Main
+jade/Scene.java
+ jade.Scene
 jade/Camera.java
  jade.Camera
 renderer/Shader.java
@@ -26,15 +26,19 @@ components/FontRenderer.java
  components.FontRenderer
 components/SpriteRenderer.java
  components.SpriteRenderer
+jade/LevelEditorScene.java
+ jade.LevelEditorScene
+renderer/Renderer.java
+ renderer.Renderer
 renderer/RenderBatch.java
  renderer.RenderBatch
 jade/LevelScene.java
  jade.LevelScene
-renderer/Renderer.java
- renderer.Renderer
-jade/Scene.java
- jade.Scene
+Main.java
+ Main
 jade/Window.java
  jade.Window
-jade/LevelEditorScene.java
- jade.LevelEditorScene
+jade/ImGUILayer.java
+ jade.ImGUILayer
+ jade.ImGUILayer$1
+ jade.ImGUILayer$2
