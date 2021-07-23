@@ -2,7 +2,8 @@ package jade;
 
 public abstract class Component {
 
-    public GameObject gameObject = null;
+    // Transient so that GSON will not serialize
+    public transient GameObject gameObject = null;
 
     public void start() {
 
