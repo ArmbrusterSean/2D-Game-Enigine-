@@ -12,16 +12,16 @@ components/SpriteSheet.java
  components.SpriteSheet
 renderer/Shader.java
  renderer.Shader
-Main.java
- Main
+jade/Scene.java
+ jade.Scene
 util/AssetPool.java
  util.AssetPool
 components/Sprite.java
  components.Sprite
-renderer/RenderBatch.java
- renderer.RenderBatch
-jade/LevelScene.java
- jade.LevelScene
+jade/Component.java
+ jade.Component
+jade/ComponentDeserializer.java
+ jade.ComponentDeserializer
 components/FontRenderer.java
  components.FontRenderer
 renderer/Renderer.java
@@ -30,15 +30,19 @@ jade/GameObject.java
  jade.GameObject
 components/SpriteRenderer.java
  components.SpriteRenderer
-jade/Scene.java
- jade.Scene
-jade/Component.java
- jade.Component
+jade/GameObjectDeserializer.java
+ jade.GameObjectDeserializer
+jade/LevelEditorScene.java
+ jade.LevelEditorScene
+renderer/RenderBatch.java
+ renderer.RenderBatch
+jade/LevelScene.java
+ jade.LevelScene
+Main.java
+ Main
+jade/Window.java
+ jade.Window
 jade/ImGUILayer.java
  jade.ImGUILayer
  jade.ImGUILayer$1
  jade.ImGUILayer$2
-jade/Window.java
- jade.Window
-jade/LevelEditorScene.java
- jade.LevelEditorScene
