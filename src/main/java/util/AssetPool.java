@@ -11,9 +11,8 @@ import java.util.Map;
 public class AssetPool {
     private static Map<String, Shader> shaders = new HashMap<>();
     private static Map<String, Texture> textures = new HashMap<>();
-    private static Map<String, SpriteSheet> spriteSheets = new HashMap<>();
+    private static Map<String, SpriteSheet> spritesheets = new HashMap<>();
 
-    // check for shader, return reference to shader
     public static Shader getShader(String resourceName) {
         File file = new File(resourceName);
         if (AssetPool.shaders.containsKey(file.getAbsolutePath())) {
@@ -38,20 +37,18 @@ public class AssetPool {
         }
     }
 
-    public static void addSpriteSheet(String resourceName, SpriteSheet spriteSheet) {
+    public static void addSpritesheet(String resourceName, SpriteSheet spritesheet) {
         File file = new File(resourceName);
-        if(!AssetPool.spriteSheets.containsKey(file.getAbsolutePath())) {
-            AssetPool.spriteSheets.put(file.getAbsolutePath(), spriteSheet);
+        if (!AssetPool.spritesheets.containsKey(file.getAbsolutePath())) {
+            AssetPool.spritesheets.put(file.getAbsolutePath(), spritesheet);
         }
     }
 
-    public static SpriteSheet getSpriteSheet(String resourceName) {
+    public static SpriteSheet getSpritesheet(String resourceName) {
         File file = new File(resourceName);
-        if(!AssetPool.spriteSheets.containsKey(file.getAbsolutePath())) {
-            assert false : "Error: '" + resourceName + "' and it has not been added to asset pool.";
+        if (!AssetPool.spritesheets.containsKey(file.getAbsolutePath())) {
+            assert false : "Error: Tried to access spritesheet '" + resourceName + "' and it has not been added to asset pool.";
         }
-        return AssetPool.spriteSheets.getOrDefault(file.getAbsolutePath(), null);
+        return AssetPool.spritesheets.getOrDefault(file.getAbsolutePath(), null);
     }
-
 }
-

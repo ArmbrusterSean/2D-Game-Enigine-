@@ -16,7 +16,7 @@ import static org.lwjgl.opengl.GL20C.glVertexAttribPointer;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
-public class RenderBatch implements Comparable<RenderBatch>{
+public class RenderBatch implements Comparable<RenderBatch> {
     // Vertex
     // ======
     // Pos               Color                         tex coords     tex id
@@ -45,7 +45,7 @@ public class RenderBatch implements Comparable<RenderBatch>{
     private Shader shader;
     private int zIndex;
 
-    public RenderBatch(int maxBatchSize, int zIndex){
+    public RenderBatch(int maxBatchSize, int zIndex) {
         this.zIndex = zIndex;
         shader = AssetPool.getShader("assets/shaders/default.glsl");
         this.sprites = new SpriteRenderer[maxBatchSize];
@@ -232,7 +232,6 @@ public class RenderBatch implements Comparable<RenderBatch>{
         return this.hasRoom;
     }
 
-    // Test for max textures (8)
     public boolean hasTextureRoom() {
         return this.textures.size() < 8;
     }
@@ -245,7 +244,6 @@ public class RenderBatch implements Comparable<RenderBatch>{
         return this.zIndex;
     }
 
-    // Compare two render batches based on zIndex
     @Override
     public int compareTo(RenderBatch o) {
         return Integer.compare(this.zIndex, o.zIndex());

@@ -16,9 +16,8 @@ public class ComponentDeserializer implements JsonSerializer<Component>,
         try {
             return context.deserialize(element, Class.forName(type));
         } catch (ClassNotFoundException e) {
-            throw new JsonParseException("Unkonw element type: " + type, e);
+            throw new JsonParseException("Unknown element type: " + type, e);
         }
-
     }
 
     @Override

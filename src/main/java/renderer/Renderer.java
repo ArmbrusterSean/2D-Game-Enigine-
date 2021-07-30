@@ -4,6 +4,7 @@ import components.SpriteRenderer;
 import jade.GameObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,8 +25,7 @@ public class Renderer {
 
     private void add(SpriteRenderer sprite) {
         boolean added = false;
-        for(RenderBatch batch : batches) {
-            // Only add sprites with the same zIndex as the batch
+        for (RenderBatch batch : batches) {
             if (batch.hasRoom() && batch.zIndex() == sprite.gameObject.zIndex()) {
                 Texture tex = sprite.getTexture();
                 if (tex == null || (batch.hasTexture(tex) || batch.hasTextureRoom())) {
@@ -35,20 +35,18 @@ public class Renderer {
                 }
             }
         }
+
         if (!added) {
-            // give batch a zIndex
             RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE, sprite.gameObject.zIndex());
             newBatch.start();
             batches.add(newBatch);
             newBatch.addSprite(sprite);
-            // sort batches every time a new one is created
             Collections.sort(batches);
         }
     }
 
     public void render() {
         for (RenderBatch batch : batches) {
-            // Draw batches in sorted order
             batch.render();
         }
     }

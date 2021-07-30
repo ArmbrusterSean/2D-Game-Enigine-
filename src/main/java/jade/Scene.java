@@ -12,18 +12,17 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-// Scene Manager
 public abstract class Scene {
 
     protected Renderer renderer = new Renderer();
     protected Camera camera;
     private boolean isRunning = false;
     protected List<GameObject> gameObjects = new ArrayList<>();
-    protected GameObject activeGameObject = null;     // game object being inspected
-    protected boolean loadedLevel = false;
+    protected GameObject activeGameObject = null;
+    protected boolean levelLoaded = false;
 
     public Scene() {
-        // Game objects, renderer, physics handle
+
     }
 
     public void init() {
@@ -31,7 +30,7 @@ public abstract class Scene {
     }
 
     public void start() {
-        for(GameObject go : gameObjects) {
+        for (GameObject go : gameObjects) {
             go.start();
             this.renderer.add(go);
         }
@@ -48,10 +47,8 @@ public abstract class Scene {
         }
     }
 
-    // pass update method
     public abstract void update(float dt);
 
-    // Get camera
     public Camera camera() {
         return this.camera;
     }
@@ -62,6 +59,7 @@ public abstract class Scene {
             activeGameObject.imgui();
             ImGui.end();
         }
+
         imgui();
     }
 
@@ -101,10 +99,10 @@ public abstract class Scene {
 
         if (!inFile.equals("")) {
             GameObject[] objs = gson.fromJson(inFile, GameObject[].class);
-            for(int i=0; i<objs.length; i++) {
+            for (int i=0; i < objs.length; i++) {
                 addGameObjectToScene(objs[i]);
             }
-            this.loadedLevel = true;
+            this.levelLoaded = true;
         }
     }
 }

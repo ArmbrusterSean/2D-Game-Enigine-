@@ -24,24 +24,23 @@ public class GameObject {
         this.transform = transform;
     }
 
-    // Abstract the component
     public <T extends Component> T getComponent(Class<T> componentClass) {
-        for (Component c: components) {
+        for (Component c : components) {
             if (componentClass.isAssignableFrom(c.getClass())) {
                 try {
                     return componentClass.cast(c);
                 } catch (ClassCastException e) {
                     e.printStackTrace();
-                    assert false: "Error: Casting Component.";
+                    assert false : "Error: Casting component.";
                 }
             }
         }
+
         return null;
     }
 
-    // Remove the component
     public <T extends Component> void removeComponent(Class<T> componentClass) {
-        for (int i = 0; i < components.size(); i++) {
+        for (int i=0; i < components.size(); i++) {
             Component c = components.get(i);
             if (componentClass.isAssignableFrom(c.getClass())) {
                 components.remove(i);
@@ -50,7 +49,6 @@ public class GameObject {
         }
     }
 
-    // Add the Component
     public void addComponent(Component c) {
         this.components.add(c);
         c.gameObject = this;
@@ -77,6 +75,5 @@ public class GameObject {
     public int zIndex() {
         return this.zIndex;
     }
-
 }
 
