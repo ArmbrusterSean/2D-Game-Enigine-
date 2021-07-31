@@ -1,25 +1,24 @@
-package jade;
+package scenes;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import components.RigidBody;
-import components.Sprite;
-import components.SpriteRenderer;
-import components.SpriteSheet;
+import components.*;
 import imgui.ImGui;
 import imgui.ImVec2;
+import jade.Camera;
+import jade.GameObject;
+import jade.Prefabs;
+import jade.Transform;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
 import org.joml.Vector4f;
+import scenes.Scene;
 import util.AssetPool;
-
-import static org.lwjgl.glfw.GLFW.*;
 
 public class LevelEditorScene extends Scene {
 
     private GameObject obj1;
     private SpriteSheet sprites;
     SpriteRenderer obj1Sprite;
+
+    MouseControls mouseControls = new MouseControls();
 
     public LevelEditorScene() {
 
@@ -58,7 +57,6 @@ public class LevelEditorScene extends Scene {
     private void loadResources() {
         AssetPool.getShader("assets/shaders/default.glsl");
 
-        // TODO: FIX TEXTURE SAVE SYSTEM TO USE PATH INSTEAD OF ID
         AssetPool.addSpritesheet("assets/images/spritesheets/decorationsAndBlocks.png",
                 new SpriteSheet(AssetPool.getTexture("assets/images/spritesheets/decorationsAndBlocks.png"),
                         16, 16, 81, 0));
@@ -67,6 +65,8 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void update(float dt) {
+        mouseControls.update(dt);
+
         for (GameObject go : this.gameObjects) {
             go.update(dt);
         }
@@ -95,7 +95,8 @@ public class LevelEditorScene extends Scene {
 
             ImGui.pushID(i);
             if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[0].x, texCoords[0].y, texCoords[2].x, texCoords[2].y)) {
-                System.out.println("Button " + i + "clicked");
+                GameObject object = Prefabs.generateSpriteObject(sprite, spriteWidth, spriteHeight);
+                mouseControls.pickupObject(object);
             }
             ImGui.popID();
 
