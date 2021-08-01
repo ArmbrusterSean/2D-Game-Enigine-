@@ -1,4 +1,3 @@
 # Mario_GameEngine
-Java Game Engine using OpenGL 
-
-This is an attempt to build a Mario Clone from scratch using OpenGL 
+2D Java Game Engine using OpenGL, GSON, ImGUI libraries and Gradle. 
+ 
