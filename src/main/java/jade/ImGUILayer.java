@@ -1,6 +1,5 @@
 package jade;
 
-import components.MouseControls;
 import imgui.*;
 import imgui.callbacks.ImStrConsumer;
 import imgui.callbacks.ImStrSupplier;
@@ -125,7 +124,6 @@ public class ImGUILayer {
             if (!io.getWantCaptureMouse()) {
                 MouseListener.mouseButtonCallback(w, button, action, mods);
             }
-
         });
 
         glfwSetScrollCallback(glfwWindow, (w, xOffset, yOffset) -> {

@@ -13,11 +13,9 @@ public class Texture {
     private int texID;
     private int width, height;
 
-/*
-    public Texture(String filepath) {
-
-    }
-*/
+//    public Texture(String filepath) {
+//
+//    }
 
     public void init(String filepath) {
         this.filepath = filepath;
@@ -35,7 +33,6 @@ public class Texture {
         // When shrinking an image, pixelate
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-        // Load Image / Data
         IntBuffer width = BufferUtils.createIntBuffer(1);
         IntBuffer height = BufferUtils.createIntBuffer(1);
         IntBuffer channels = BufferUtils.createIntBuffer(1);
@@ -59,7 +56,6 @@ public class Texture {
             assert false : "Error: (Texture) Could not load image '" + filepath + "'";
         }
 
-        // prevent data leak
         stbi_image_free(image);
     }
 

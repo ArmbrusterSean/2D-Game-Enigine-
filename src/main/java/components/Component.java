@@ -12,7 +12,6 @@ public abstract class Component {
     private static int ID_COUNTER = 0;
     private int uid = -1;
 
-
     public transient GameObject gameObject = null;
 
     public void start() {

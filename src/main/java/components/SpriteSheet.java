@@ -17,8 +17,7 @@ public class SpriteSheet {
         this.texture = texture;
         int currentX = 0;
         int currentY = texture.getHeight() - spriteHeight;
-        // get normalized device coordinates
-        for (int i = 0; i < numSprites; i++) {
+        for (int i=0; i < numSprites; i++) {
             float topY = (currentY + spriteHeight) / (float)texture.getHeight();
             float rightX = (currentX + spriteWidth) / (float)texture.getWidth();
             float leftX = currentX / (float)texture.getWidth();
@@ -28,7 +27,7 @@ public class SpriteSheet {
                     new Vector2f(rightX, topY),
                     new Vector2f(rightX, bottomY),
                     new Vector2f(leftX, bottomY),
-                    new Vector2f(leftX, topY),
+                    new Vector2f(leftX, topY)
             };
             Sprite sprite = new Sprite();
             sprite.setTexture(this.texture);
@@ -38,7 +37,7 @@ public class SpriteSheet {
             this.sprites.add(sprite);
 
             currentX += spriteWidth + spacing;
-            if(currentX >= texture.getWidth()) {
+            if (currentX >= texture.getWidth()) {
                 currentX = 0;
                 currentY -= spriteHeight + spacing;
             }

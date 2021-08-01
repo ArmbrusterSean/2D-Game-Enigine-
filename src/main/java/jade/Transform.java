@@ -42,3 +42,4 @@ public class Transform {
         return t.position.equals(this.position) && t.scale.equals(this.scale);
     }
 }
+
