@@ -18,10 +18,8 @@ jade/GameObject.java
  jade.GameObject
 components/Sprite.java
  components.Sprite
-jade/ImGUILayer.java
- jade.ImGUILayer
- jade.ImGUILayer$1
- jade.ImGUILayer$2
+jade/Camera.java
+ jade.Camera
 renderer/Shader.java
  renderer.Shader
 jade/Transform.java
@@ -36,8 +34,8 @@ scenes/Scene.java
  scenes.Scene
 components/FontRenderer.java
  components.FontRenderer
-jade/Window.java
- jade.Window
+components/ComponentDeserializer.java
+ components.ComponentDeserializer
 components/SpriteRenderer.java
  components.SpriteRenderer
 components/Component.java
@@ -52,7 +50,9 @@ jade/Prefabs.java
  jade.Prefabs
 renderer/Texture.java
  renderer.Texture
-jade/Camera.java
- jade.Camera
-components/ComponentDeserializer.java
- components.ComponentDeserializer
+jade/Window.java
+ jade.Window
+jade/ImGUILayer.java
+ jade.ImGUILayer
+ jade.ImGUILayer$1
+ jade.ImGUILayer$2
