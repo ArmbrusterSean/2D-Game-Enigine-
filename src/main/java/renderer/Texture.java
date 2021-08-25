@@ -10,12 +10,9 @@ import static org.lwjgl.stb.STBImage.*;
 
 public class Texture {
     private String filepath;
-    private int texID;
+    private transient int texID;
     private int width, height;
 
-//    public Texture(String filepath) {
-//
-//    }
 
     //Default Constr will generate error if called, we do not want this to work properly
     public Texture() {
