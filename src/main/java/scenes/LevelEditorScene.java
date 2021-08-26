@@ -72,7 +72,7 @@ public class LevelEditorScene extends Scene {
             if (g.getComponent(SpriteRenderer.class) != null) {
                 SpriteRenderer spr = g.getComponent(SpriteRenderer.class);
                 if (spr.getTexture() != null) {
-                    spr.setTexture(AssetPool.getTexture((spr.getTexture().getFilePath())));
+                    spr.setTexture(AssetPool.getTexture(spr.getTexture().getFilePath()));
                 }
             }
         }

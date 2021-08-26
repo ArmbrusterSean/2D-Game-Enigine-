@@ -7,31 +7,32 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+    flatDir {
+        dirs 'libs'
+    }
     jcenter()
     mavenCentral()
 }
 
+// Remember to use implementation NOT testCompile
 dependencies {
-    implementation group: 'junit', name: 'junit', version: '4.13.2'
+    implementation group: 'junit', name: 'junit', version: '4.12'
 }
 
 project.ext.lwjglVersion = "3.2.3"
-project.ext.jomlVersion = "1.10.1"
+project.ext.jomlVersion = "1.9.23"
 project.ext.lwjglNatives = "natives-windows"
-project.ext.imguiVersion = '1.83.3'
+project.ext.imguiVersion = '1.81.0'
 
 dependencies {
+    // JUnit
+    testImplementation('junit:junit:4.13')
+
     // GSON
-    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     // ImGUI stuff
-    implementation "io.imgui.java:binding:$imguiVersion"
-    implementation "io.imgui.java:lwjgl3:$imguiVersion"
-    implementation "io.github.spair:imgui-java-app:1.83.3"
-
-    // Include all available natives, but it's likely that you want something specific
-    runtimeOnly "io.imgui.java:natives-windows:$imguiVersion"
-
+    implementation "io.github.spair:imgui-java-app:$imguiVersion"
 
     // LWJGL stuff
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
@@ -51,5 +52,4 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
     implementation "org.joml:joml:${jomlVersion}"
-
 }
