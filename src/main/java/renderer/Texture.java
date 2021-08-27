@@ -13,8 +13,6 @@ public class Texture {
     private transient int texID;
     private int width, height;
 
-
-    //Default Constr will generate error if called, we do not want this to work properly
     public Texture() {
         texID = -1;
         width = -1;
@@ -28,10 +26,12 @@ public class Texture {
         texID = glGenTextures();
         glBindTexture(GL_TEXTURE_2D, texID);
 
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height,
                 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
     }
-
 
     public void init(String filepath) {
         this.filepath = filepath;
@@ -87,6 +87,10 @@ public class Texture {
         return this.width;
     }
 
+    public String getFilepath() {
+        return this.filepath;
+    }
+
     public int getHeight() {
         return this.height;
     }
@@ -95,16 +99,13 @@ public class Texture {
         return texID;
     }
 
-    public String getFilePath() {
-        return this.filepath;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null) return false;
         if (!(o instanceof Texture)) return false;
         Texture oTex = (Texture)o;
-        return oTex.getWidth() == this.width && oTex.getHeight() == this.height && oTex.getId() == this.texID &&
-                oTex.getFilePath().equals(this.filepath);
+        return oTex.getWidth() == this.width && oTex.getHeight() == this.height &&
+                oTex.getId() == this.texID &&
+                oTex.getFilepath().equals(this.filepath);
     }
 }

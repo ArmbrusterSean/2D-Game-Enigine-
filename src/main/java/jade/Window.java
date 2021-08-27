@@ -19,7 +19,7 @@ public class Window {
     private String title;
     private long glfwWindow;
     private ImGUILayer imguiLayer;
-    private FrameBuffer frameBuffer;
+    private FrameBuffer framebuffer;
 
     public float r, g, b, a;
     private boolean fadeToBlack = false;
@@ -133,7 +133,8 @@ public class Window {
         this.imguiLayer = new ImGUILayer(glfwWindow);
         this.imguiLayer.initImGui();
 
-        this.frameBuffer = new FrameBuffer(1920, 1080);
+        this.framebuffer = new FrameBuffer(3840, 2160);
+        glViewport(0, 0, 3840, 2160);
 
         Window.changeScene(0);
     }
@@ -149,15 +150,15 @@ public class Window {
 
             DebugDraw.beginFrame();
 
+            this.framebuffer.bind();
             glClearColor(r, g, b, a);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            //this.frameBuffer.bind();
             if (dt >= 0) {
                 DebugDraw.draw();
                 currentScene.update(dt);
             }
-            this.frameBuffer.unbind();
+            this.framebuffer.unbind();
 
             this.imguiLayer.update(dt, currentScene);
             glfwSwapBuffers(glfwWindow);
@@ -184,5 +185,13 @@ public class Window {
 
     public static void setHeight(int newHeight) {
         get().height = newHeight;
+    }
+
+    public static FrameBuffer getFramebuffer() {
+        return get().framebuffer;
+    }
+
+    public static float getTargetAspectRatio() {
+        return 16.0f / 9.0f;
     }
 }
